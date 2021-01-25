@@ -12,14 +12,14 @@ const promise = new Promise((resolve, reject) => {
 });
 
 promise.then(
-  () => showMessage('Promise was resolved!')
+  () => showMessage('message', 'Promise was resolved!')
 ).catch(
-  () => showMessage('Promise was rejected!')
-).finally(
-  () => showMessage('Finish')
+  () => showMessage('error-message', 'Promise was rejected!')
 );
 
-function showMessage(message) {
-  //  eslint-disable-next-line no-console
-  console.log(message);
+function showMessage(messageType, messageText) {
+  document.body.insertAdjacentHTML(
+    'afterbegin',
+    `<p class='${messageType}'>${messageText}</p>`
+  );
 }
